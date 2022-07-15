@@ -10,7 +10,7 @@
 }
 
 .wrapper {
-  width: 25rem;
+  width: 50rem; /*change 25 rem -> 50rem*/
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,6 +35,8 @@
 ul {
   list-style: none;
   padding-left: 0;
+  display: grid; /*add 1 line 2 item */
+  grid-template-columns: 1fr 1fr; /*add 1 line 2 item */
 }
 
 .num, .title, .singer {

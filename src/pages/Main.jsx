@@ -80,7 +80,7 @@ function Main() {
       console.log('input value => ' + searchRef.current.value);
       const searchedList = chartList.filter((item) => {
         return item.title.toLowerCase().includes(searchRef.current.value);
-      });
+      }); /* 소문자 조회 가능 / 대문자 조회 불가 */
       setChartList(searchedList);
     }
 
@@ -149,20 +149,34 @@ function Main() {
           </div>
 
           <ul>
-            {chartList.map((item, idx) => (
-                  <li key={idx} onClick={()=>{ nv(`/detail/${item.id}`) }}>
-                    <div className={styles.contents}>
-                      <span className={styles.num}>{item.rank}</span>
-                      <img
-                      className={styles.img}
-                      art="img"
-                      src={`/images/${item.imageUrl}`}/>
-                      <span className={styles.title}>{item.title}</span>
-                      <span className={styles.singer}>{item.singer}</span>
-                    </div>
-                  </li>
+          {chartList.map((item, idx) => (
+                <li key={idx} onClick={()=>{ nv(`/detail/${item.id}`) }}>
+                  <div className={styles.contents}>
+                    <span className={styles.num}>{item.rank}</span>
+                    <img
+                    className={styles.img}
+                    art="img"
+                    src={`/images/${item.imageUrl}`}/>
+                    <span className={styles.title}>{item.title}</span>
+                    <span className={styles.singer}>{item.singer}</span>
+                  </div>
+                </li>
             )) 
             }
+            {/* {chartList.map((item, idx) => (
+                <li key={idx} onClick={()=>{ nv(`/detail/${item.id}`) }}>
+                  <div className={styles.contents}>
+                    <span className={styles.num}>{item.rank}</span>
+                    <img
+                    className={styles.img}
+                    art="img"
+                    src={`/images/${item.imageUrl}`}/>
+                    <span className={styles.title}>{item.title}</span>
+                    <span className={styles.singer}>{item.singer}</span>
+                  </div>
+                </li>
+            )) 
+            } */}
           </ul>
         </div>
         <button className={styles.gototop} onClick={()=> window.scrollTo(0, 0)}>맨 위로</button>
