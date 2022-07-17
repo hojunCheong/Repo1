@@ -39,6 +39,26 @@ ul {
   grid-template-columns: 1fr 1fr; /*add 1 line 2 item */
 }
 
+.historyUl{
+  list-style: none;
+  padding-left: 0;
+}
+
+.historyBox{
+  margin: 0.5rem 0 0.5rem 0;
+  border : 1px solid black;
+}
+
+.searchedListItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.keyword:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
 .num, .title, .singer {
   text-overflow: ellipsis;
   white-space: nowrap;
