@@ -42,6 +42,7 @@ ul {
 .historyUl{
   list-style: none;
   padding-left: 0;
+  display: inline
 }
 
 .historyBox{
@@ -51,6 +52,7 @@ ul {
 
 .searchedListItem {
   display: flex;
+  border: 1px solid black;
   justify-content: space-between;
 }
 
