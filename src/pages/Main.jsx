@@ -64,6 +64,9 @@ function Main() {
   useEffect(() => {
     console.log("useEffect search");
     setKeywordHistoryList(makeKeywordHistoryList(keyWordHistory));
+    if (keyWordHistory.length == 0) {
+      setHistoryShow(false);
+    }
   }, [keyWordHistory]);
   
 
@@ -111,6 +114,12 @@ function Main() {
       addRecentSearch();
     }
 
+    // 검색기록 전체 삭제
+    const clearKeywords = () => {
+      setKeyWordHistory([]);
+      setHistoryShow(false);
+    };
+
     // 검색 키워드 history 추가
     const addRecentSearch = () => {
       if (searchRef.current.value !== "") {
@@ -121,6 +130,7 @@ function Main() {
 
     // 검색기록 list 만드는 함수
     const makeKeywordHistoryList = (data) => {
+      console.log("data : " + data);
       const historyList = data.map((item, idx) => {
         return (
           <div key={idx} className={styles.searchedListItem}>
@@ -131,6 +141,7 @@ function Main() {
                   return list.title.toLowerCase().includes(item);
                 });
                 //setChartList(makeList(filtered));
+                console.log("filtered : " + filtered);
                 setChartList(filtered);
                 setHistoryShow(false);
               }}
@@ -176,6 +187,7 @@ function Main() {
     const cancelSearch = () => {
       searchRef.current.value = '';
       fetchData();
+      setHistoryShow(false);
     }
 
     const onKeyPress = (e) => {
@@ -184,7 +196,7 @@ function Main() {
 
     // 검색창 클릭 event
     const onClick = () => {
-      console.log("onClick :" + keyWordHistory);
+      console.log("onClick :" + keyWordHistory.length);
       // toggle 기능
       if (keyWordHistory.length > 0) {
         setHistoryShow(!historyShow);
@@ -243,6 +255,7 @@ function Main() {
             placeholder="제목검색" />
             <button onClick={searchTitle}>검색</button>
             <button onClick={cancelSearch}>검색취소</button>
+            <button onClick={clearKeywords}>검색기록 초기화</button>
 
             {/* 검색기록 영역 */}
             {historyShow && (
